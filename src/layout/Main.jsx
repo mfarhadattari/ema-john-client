@@ -4,7 +4,6 @@ import BarLoader from "../components/BarLoader/BarLoader";
 
 const Main = () => {
   const navigation = useNavigation();
-  console.log(navigation.state);
   return (
     <div>
       <div className="font-lato min-h-screen">
