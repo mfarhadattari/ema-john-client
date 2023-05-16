@@ -21,7 +21,8 @@ const Products = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/products?page=${currentPage}&limit=${productPerPage}`
+      // `http://localhost:5000/products?page=${currentPage}&limit=${productPerPage}`
+      `https://mfarhad-ema-jhon.vercel.app/products?page=${currentPage}&limit=${productPerPage}`
     )
       .then((res) => res.json())
       .then((data) => setProducts(data));
