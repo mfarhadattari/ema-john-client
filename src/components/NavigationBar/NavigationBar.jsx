@@ -19,7 +19,7 @@ const NavigationBar = () => {
     </>
   );
   return (
-    <nav className="px-20 py-5 bg-slate-950 text-white navbar sticky top-0">
+    <nav className="p-5 lg:px-20  bg-slate-950 text-white navbar sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden ">
