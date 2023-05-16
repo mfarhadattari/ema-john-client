@@ -8,13 +8,13 @@ const Pagination = ({ handelProductPerPage, pages, handelPageNumber }) => {
 
   return (
     <div className="w-fit mx-auto my-10">
-      <div className="flex gap-10">
-        <div className="btn-group space-x-2">
+      <div className="flex gap-10 flex-wrap">
+        <div className="flex justify-center flex-wrap gap-3 w-fit mx-auto">
           {paginationArray.map((number) => {
             return (
               <button
                 key={number}
-                className="btn"
+                className="btn btn-circle btn-outline"
                 onClick={() => handelPageNumber(number)}
               >
                 {number + 1}
@@ -22,7 +22,7 @@ const Pagination = ({ handelProductPerPage, pages, handelPageNumber }) => {
             );
           })}
         </div>
-        <div>
+        <div className="w-fit mx-auto">
           <select
             className="select select-bordered w-full max-w-xs"
             onChange={handelProductPerPage}

@@ -4,7 +4,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const SignUp = () => {
   return (
     <section className="container mx-auto">
-      <div className="border-2 w-full p-5 md:w-1/2 lg:w-1/3 mx-auto rounded-lg">
+      <div className="md:border-2 w-full p-5 md:w-1/2 lg:w-1/3 mx-auto rounded-lg">
         <h2 className="text-center text-2xl font-bold">Sign Up</h2>
         <form>
           <div className="form-control">
