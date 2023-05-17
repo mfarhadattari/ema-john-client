@@ -4,9 +4,10 @@ import useLoadOrdersData from "../../hooks/useLoadOrdersData";
 import BarLoader from "../../components/BarLoader/BarLoader";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Cart from "../../components/Cart/Cart";
+import Swal from "sweetalert2";
 
 const OrdersReview = () => {
-  const { orders, loading } = useLoadOrdersData();
+  const { orders, loading , handelRemoveProduct, handelClearCart} = useLoadOrdersData();
   const { user } = useContext(AuthContext);
 
   return (
@@ -25,12 +26,12 @@ const OrdersReview = () => {
                 </div>
               )}
               {orders.map((order) => (
-                <OrderItem key={order._id} order={order}></OrderItem>
+                <OrderItem key={order._id} order={order} handelRemoveProduct={handelRemoveProduct}></OrderItem>
               ))}
             </div>
           </div>
           <div className="w-full mx-auto col-span-2 lg:col-span-1">
-            <Cart orders={orders}></Cart>
+            <Cart orders={orders} handelClearCart={handelClearCart}></Cart>
           </div>
         </div>
       )}

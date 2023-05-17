@@ -1,7 +1,8 @@
 import { FaTrashAlt } from "react-icons/fa";
 
-const OrderItem = ({ order }) => {
-  const { img, name, price, quantity, shipping } = order;
+const OrderItem = ({ order, handelRemoveProduct }) => {
+  const { img, name, price, quantity, _id } = order;
+
   return (
     <div className="flex justify-between items-center mt-5 border-2 shadow-sm p-2 rounded-lg">
       <div className="flex items-center gap-2 md:gap-10">
@@ -21,7 +22,10 @@ const OrderItem = ({ order }) => {
         </div>
       </div>
       <div className="md:p-5">
-        <button className="btn btn-circle bg-[#EB5757] bg-opacity-30 text-[#EB5757] text-xl border-0 bg">
+        <button
+          className="btn btn-circle bg-[#EB5757] bg-opacity-30 text-[#EB5757] text-xl border-0 bg"
+          onClick={() => handelRemoveProduct(_id)}
+        >
           <FaTrashAlt></FaTrashAlt>
         </button>
       </div>

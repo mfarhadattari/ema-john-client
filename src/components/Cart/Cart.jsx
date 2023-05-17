@@ -1,19 +1,16 @@
 import { FaPray, FaTrashAlt } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
+import useLoadOrdersData from "../../hooks/useLoadOrdersData";
 
-const Cart = ({ orders }) => {
-  // console.log(orders);
-
+const Cart = ({ orders, handelClearCart }) => {
   let totalPrice = 0;
   let totalShippingCharge = 0;
   orders.forEach((order) => {
     const quantity = parseInt(order.quantity);
     const eachPrice = parseFloat(order.price) * quantity;
     totalPrice = totalPrice + eachPrice;
-
     const eachShippingCharge = (eachPrice * parseFloat(order.shipping)) / 100;
     totalShippingCharge = totalShippingCharge + eachShippingCharge;
-    // console.log(order);
   });
 
   const total = totalPrice + totalShippingCharge;
@@ -34,10 +31,15 @@ const Cart = ({ orders }) => {
           Total Shipping Charge: $ {totalShippingCharge.toFixed(2)}
         </p>
         <p className="text-xl font-medium">Tax: ${tax}</p>
-        <h4 className="text-xl font-bold">Grand Total: $ {grandTotal.toFixed(2)} </h4>
+        <h4 className="text-xl font-bold">
+          Grand Total: $ {grandTotal.toFixed(2)}{" "}
+        </h4>
       </div>
       <div className="space-y-3 mt-5">
-        <button className="btn w-full flex justify-between mx-auto">
+        <button
+          className="btn w-full flex justify-between mx-auto"
+          onClick={handelClearCart}
+        >
           Clear Cart <FaTrashAlt></FaTrashAlt>
         </button>
         <button className="btn w-full flex justify-between mx-auto">
