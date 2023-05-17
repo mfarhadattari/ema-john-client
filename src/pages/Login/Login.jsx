@@ -20,17 +20,13 @@ const Login = () => {
 
     loginUser(email, password)
       .then((loginResult) => {
-        fetch(
-          "https://mfarhad-ema-john.onrender.com/generateUserToken",
-          // "http://localhost:5000/generateUserToken"
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ email: loginResult.user.email }),
-          }
-        )
+        fetch("https://mfarhad-ema-john.onrender.com/generateUserToken", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: loginResult.user.email }),
+        })
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("ema-john-user-token", data.token);
@@ -40,7 +36,7 @@ const Login = () => {
               confirmButtonText: "OK",
             }).then((result) => {
               form.reset();
-              // navigate("/");
+              navigate("/");
             });
           });
       })

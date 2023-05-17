@@ -13,17 +13,13 @@ const SocialLogin = () => {
   const handelGoogleSignIn = () => {
     loginUserWithGoogle()
       .then((loginResult) => {
-        fetch(
-          // "http://localhost:5000/generateUserToken"
-          "https://mfarhad-ema-john.onrender.com/generateUserToken",
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ email: loginResult.user.email }),
-          }
-        )
+        fetch("https://mfarhad-ema-john.onrender.com/generateUserToken", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: loginResult.user.email }),
+        })
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("ema-john-user-token", data.token);
@@ -32,7 +28,7 @@ const SocialLogin = () => {
               icon: "success",
               confirmButtonText: "OK",
             }).then((result) => {
-              // navigate("/");
+              navigate("/");
             });
           });
       })

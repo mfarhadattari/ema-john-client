@@ -5,6 +5,7 @@ import OrdersReview from "../pages/OrdersReview/OrdersReview";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Error from "../pages/Error/Error";
+import useLoadOrdersData from "../hooks/useLoadOrdersData";
 
 const routes = createBrowserRouter([
   {
@@ -14,8 +15,8 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        // loader: () => fetch("http://localhost:5000/totalProducts"),
-        loader: () => fetch("https://mfarhad-ema-john.onrender.com/totalProducts"),
+        loader: () =>
+          fetch("https://mfarhad-ema-john.onrender.com/totalProducts"),
       },
       {
         path: "/orders-review",

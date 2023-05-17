@@ -24,7 +24,6 @@ const Products = () => {
 
   useEffect(() => {
     fetch(
-      // `http://localhost:5000/products?page=${currentPage}&limit=${productPerPage}`
       `https://mfarhad-ema-john.onrender.com/products?page=${currentPage}&limit=${productPerPage}`
     )
       .then((res) => res.json())
