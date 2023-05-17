@@ -11,7 +11,7 @@ const NavigationBar = () => {
   const navItems = (
     <>
       <NavigationLink to="/">Home</NavigationLink>
-      <NavigationLink to="/order">Orders Review</NavigationLink>
+      <NavigationLink to="/orders-review">Orders Review</NavigationLink>
 
       {user ? (
         <Avatar></Avatar>

@@ -21,6 +21,7 @@ const Avatar = () => {
       if (result.isConfirmed) {
         logOutUser()
           .then(() => {
+            localStorage.removeItem("ema-john-user-token");
             Swal.fire({
               title: "Successfully Log Out!",
               icon: "success",

@@ -20,14 +20,29 @@ const Login = () => {
 
     loginUser(email, password)
       .then((loginResult) => {
-        Swal.fire({
-          title: "Login Successfully!",
-          icon: "success",
-          confirmButtonText: "OK",
-        }).then((result) => {
-          form.reset();
-          navigate("/");
-        });
+        fetch(
+          "https://mfarhad-ema-john.onrender.com/generateUserToken",
+          // "http://localhost:5000/generateUserToken"
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ email: loginResult.user.email }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("ema-john-user-token", data.token);
+            Swal.fire({
+              title: "Login Successfully!",
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then((result) => {
+              form.reset();
+              // navigate("/");
+            });
+          });
       })
       .catch((error) => console.error(error.message));
   };
