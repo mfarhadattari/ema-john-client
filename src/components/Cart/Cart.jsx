@@ -1,18 +1,40 @@
 import { FaPray, FaTrashAlt } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 
-const Cart = () => {
+const Cart = ({ orders }) => {
+  // console.log(orders);
+
+  let totalPrice = 0;
+  let totalShippingCharge = 0;
+  orders.forEach((order) => {
+    const quantity = parseInt(order.quantity);
+    const eachPrice = parseFloat(order.price) * quantity;
+    totalPrice = totalPrice + eachPrice;
+
+    const eachShippingCharge = (eachPrice * parseFloat(order.shipping)) / 100;
+    totalShippingCharge = totalShippingCharge + eachShippingCharge;
+    // console.log(order);
+  });
+
+  const total = totalPrice + totalShippingCharge;
+  const tax = `${total > 1000 ? (total * 0.1).toFixed(2) : 0}`;
+  const grandTotal = total + parseFloat(tax);
+
   return (
     <div className="w-full mx-auto h-fit border rounded-xl shadow-xl lg:sticky lg:top-40 p-5">
       <h2 className="text-center text-3xl font-bold underline underline-offset-8">
         Order Summary
       </h2>
       <div className="mt-10 space-y-3">
-        <p className="text-xl font-medium">Selected Items: 6 </p>
-        <p className="text-xl font-medium">Total Price: $1140 </p>
-        <p className="text-xl font-medium">Total Shipping Charge: $5 </p>
-        <p className="text-xl font-medium">Tax: $114 </p>
-        <h4 className="text-xl font-bold">Grand Total: $1559 </h4>
+        <p className="text-xl font-medium">Selected Items: {orders?.length} </p>
+        <p className="text-xl font-medium">
+          Total Price: $ {totalPrice.toFixed(2)}{" "}
+        </p>
+        <p className="text-xl font-medium">
+          Total Shipping Charge: $ {totalShippingCharge.toFixed(2)}
+        </p>
+        <p className="text-xl font-medium">Tax: ${tax}</p>
+        <h4 className="text-xl font-bold">Grand Total: $ {grandTotal.toFixed(2)} </h4>
       </div>
       <div className="space-y-3 mt-5">
         <button className="btn w-full flex justify-between mx-auto">

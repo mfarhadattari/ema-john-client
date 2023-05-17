@@ -30,7 +30,7 @@ const OrdersReview = () => {
             </div>
           </div>
           <div className="w-full mx-auto col-span-2 lg:col-span-1">
-            <Cart></Cart>
+            <Cart orders={orders}></Cart>
           </div>
         </div>
       )}

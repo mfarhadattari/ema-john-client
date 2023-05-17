@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          _id,
+          productId: _id,
           email: user.email,
           img,
           name,
