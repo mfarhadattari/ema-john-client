@@ -7,13 +7,13 @@ const Main = () => {
   return (
     <div>
       <div className="font-lato min-h-screen">
+        <NavigationBar></NavigationBar>
         {navigation.state === "loading" ? (
           <div className="min-h-screen flex justify-center items-center ">
             <BarLoader></BarLoader>
           </div>
         ) : (
           <>
-            <NavigationBar></NavigationBar>
             <main className="mt-10">
               <Outlet></Outlet>
             </main>
